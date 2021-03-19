@@ -1,3 +1,5 @@
+![Banner](https://banners.beyondco.de/Nova%20callback%20functions.png?theme=light&packageManager=composer+require&packageName=ganyicz%2Fnova-callbacks&pattern=charlieBrown&style=style_1&description=Definie+after-save+callbacks+directly+inside+your+Nova+Resource.&md=1&showWatermark=0&fontSize=100px&images=reply)
+
 # Missing Nova resource callback functions
 
 This package adds support for defining callback functions directly inside your resource class.
