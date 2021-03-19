@@ -1,0 +1,30 @@
+{
+    "name": "ganyicz/nova-callbacks",
+    "description": "Add after-save callbacks to your Laravel Nova resources.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "callbacks"
+    ],
+    "authors": [
+        {
+            "name": "Filip Ganyicz",
+            "email": "ganyicz.filip@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.2.5",
+        "laravel/nova": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ganyicz\\NovaCallbacks\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
