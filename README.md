@@ -39,6 +39,8 @@ class User extends Resource
 
 Currently, if you want to do anything after your resource is saved, you have to define a model observer outside of the resource class. This just makes the code harder to find. This package is especially useful if you only need to do a simple logic after your resource is saved, as everything can be kept in one file.
 
+To expand the possibilities, check out my other package [Nova Temporary Fields](https://github.com/ganyicz/nova-temporary-fields) which allows you to create custom fields that won't be persisted in your model and will only be available inside the callbacks.
+
 ## Installation
 
 You can install the package via composer:
@@ -51,6 +53,8 @@ composer require ganyicz/nova-callbacks
 
 1. Apply `HasCallbacks` trait on your resource. 
 2. Define one of the callback functions.
+
+TIP: Apply the trait on your base Resource class inside your Nova folder so that the callback functions are available for you in every new resource.
 
 ## Available callbacks
 
