@@ -17,15 +17,30 @@ class User extends Resource
     {
         return [];
     }
+    
+    public static function beforeSave(Request $request, $model)
+    {
+      // Do something before the model is created or updated
+    }
 
     public static function afterSave(Request $request, $model)
     {
       // Do something after the model is created or updated
     }
     
+    public static function beforeCreate(Request $request, $model)
+    {
+      // Do something before the model is created
+    }
+    
     public static function afterCreate(Request $request, $model)
     {
       // Do something after the model is created
+    }
+    
+    public static function beforeUpdate(Request $request, $model)
+    {
+      // Do something before the model is updated
     }
     
     public static function afterUpdate(Request $request, $model)
@@ -58,13 +73,25 @@ TIP: Apply the trait on your base Resource class inside your Nova folder so that
 
 ## Available callbacks
 
+`public static function beforeSave(Request $request, $model)`
+
+Called both before creating and updating the resource
+
 `public static function afterSave(Request $request, $model)`
 
 Called both after creating and updating the resource
 
+`public static function beforeCreate(Request $request, $model)`
+
+Called before creating a new resource
+
 `public static function afterCreate(Request $request, $model)`
 
 Called after creating a new resource
+
+`public static function beforeUpdate(Request $request, $model)`
+
+Called before updating an existing resource
 
 `public static function afterUpdate(Request $request, $model)`
 
