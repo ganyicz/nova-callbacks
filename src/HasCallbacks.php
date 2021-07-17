@@ -23,7 +23,7 @@ trait HasCallbacks
         }
 
         if (method_exists(static::class, 'afterCreate')) {
-            $model::saved(function ($model) use ($request) {
+            $model::created(function ($model) use ($request) {
                 static::afterCreate($request, $model);
             });
         }
