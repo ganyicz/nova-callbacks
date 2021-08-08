@@ -2,8 +2,17 @@
 
 namespace Ganyicz\NovaCallbacks;
 
+use Illuminate\Database\Eloquent\Model;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
+/**
+ * @method static beforeSave(NovaRequest $request, Model $model): void
+ * @method static afterSave(NovaRequest $request, Model $model): void
+ * @method static beforeCreate(NovaRequest $request, Model $model): void
+ * @method static afterCreate(NovaRequest $request, Model $model): void
+ * @method static beforeUpdate(NovaRequest $request, Model $model): void
+ * @method static afterUpdate(NovaRequest $request, Model $model): void
+ */
 trait HasCallbacks
 {
     public static function fill(NovaRequest $request, $model)
