@@ -3,6 +3,7 @@
 namespace Ganyicz\NovaCallbacks;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 /**
@@ -12,9 +13,26 @@ use Laravel\Nova\Http\Requests\NovaRequest;
  * @method static afterCreate(NovaRequest $request, Model $model): void
  * @method static beforeUpdate(NovaRequest $request, Model $model): void
  * @method static afterUpdate(NovaRequest $request, Model $model): void
+ * @method static beforeAttach(NovaRequest $request, Model $model, Pivot $pivot): void
+ * @method static afterAttach(NovaRequest $request, Model $model, Pivot $pivot): void
  */
 trait HasCallbacks
 {
+    public static function fillPivot(NovaRequest $request, $model, $pivot)
+    {
+        if (method_exists(static::class, 'beforeAttach')) {
+            static::beforeAttach($request, $model, $pivot);
+        }
+
+        $response = parent::fillPivot($request, $model, $pivot);
+
+        if (method_exists(static::class, 'afterAttach')) {
+            static::afterAttach($request, $model, $pivot);
+        }
+
+        return $response;
+    }
+
     public static function fill(NovaRequest $request, $model)
     {
         if (method_exists(static::class, 'beforeSave')) {
