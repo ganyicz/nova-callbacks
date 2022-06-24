@@ -12,40 +12,50 @@ use Ganyicz\NovaCallbacks\HasCallbacks
 class User extends Resource
 {
     use HasCallbacks;
-    
-    public function fields(Request $request)
+
+    public function fields(Request $request): array
     {
         return [];
     }
-    
-    public static function beforeSave(Request $request, $model)
+
+    public static function beforeSave(Request $request, Model $model): void
     {
       // Do something before the model is created or updated
     }
 
-    public static function afterSave(Request $request, $model)
+    public static function afterSave(Request $request, Model $model): void
     {
       // Do something after the model is created or updated
     }
-    
-    public static function beforeCreate(Request $request, $model)
+
+    public static function beforeCreate(Request $request, Model $model): void
     {
       // Do something before the model is created
     }
-    
-    public static function afterCreate(Request $request, $model)
+
+    public static function afterCreate(Request $request, Model $model): void
     {
       // Do something after the model is created
     }
-    
-    public static function beforeUpdate(Request $request, $model)
+
+    public static function beforeUpdate(Request $request, Model $model): void
     {
       // Do something before the model is updated
     }
-    
-    public static function afterUpdate(Request $request, $model)
+
+    public static function afterUpdate(Request $request, Model $model): void
     {
       // Do something after the model is updated
+    }
+
+    public static function beforeAttach(Request $request, Model $model, Pivot $pivot): void
+    {
+      // Do something before pivot field is attached to model
+    }
+
+    public static function afterAttach(Request $request, Model $model, Pivot $pivot): void
+    {
+      // Do something after pivot field is attached to model
     }
 }
 ```
@@ -73,29 +83,37 @@ TIP: Apply the trait on your base Resource class inside your Nova folder so that
 
 ## Available callbacks
 
-`public static function beforeSave(Request $request, $model)`
+`public static function beforeSave(Request $request, Model $model): void`
 
 Called both before creating and updating the resource
 
-`public static function afterSave(Request $request, $model)`
+`public static function afterSave(Request $request, Model $model): void`
 
 Called both after creating and updating the resource
 
-`public static function beforeCreate(Request $request, $model)`
+`public static function beforeCreate(Request $request, Model $model): void`
 
 Called before creating a new resource
 
-`public static function afterCreate(Request $request, $model)`
+`public static function afterCreate(Request $request, Model $model): void`
 
 Called after creating a new resource
 
-`public static function beforeUpdate(Request $request, $model)`
+`public static function beforeUpdate(Request $request, Model $model): void`
 
 Called before updating an existing resource
 
-`public static function afterUpdate(Request $request, $model)`
+`public static function afterUpdate(Request $request, Model $model): void`
 
 Called after updating an existing resource
+
+`public static function beforeAttach(NovaRequest $request, Model $model, Pivot $pivot): void`
+
+Called before attaching resource via `BelongsToMany` field
+
+`public static function afterAttach(NovaRequest $request, Model $model, Pivot $pivot): void`
+
+Called after attaching resource via `BelongsToMany` field
 
 ## How does it work?
 
